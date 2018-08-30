@@ -12,7 +12,13 @@ public class UserService implements IUserService {
     @Autowired
     UserRepository userRepository;
 
-    public void save(User user) {
+    @Cacheable()
+    public void create(User user) {
+        userRepository.save(user);
+    }
+
+    @Cacheable()
+    public void update(User user) {
         userRepository.save(user);
     }
 
